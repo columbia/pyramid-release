@@ -1,0 +1,27 @@
+{
+    "name": "pyramid_example",
+
+    "command": "build",
+
+    // Total number of features.
+    "featureCount": 39,
+
+    // Features that should be counted together.
+    "featureCombinations": [],
+
+    // Valid labels found in the data.
+    "labels": [-1, 1],
+
+    // Standard deviation of laplacian distribution that will be sampled.
+    "noiseLaplaceB": 195,
+    "sumNNoiseDraws": 20,
+
+    // Configure hash table by setting `cms` to false
+    "countTableConfig": {"type": "unbiased_cms",
+                         "delta": 0.007,
+                         "epsilon": 0.0000272},
+
+    "percentilesFile": "example_percentiles.txt",
+    "countTableFile": "count_table.txt",
+    "countDataFile": "example_data.txt.vw.gz"
+}

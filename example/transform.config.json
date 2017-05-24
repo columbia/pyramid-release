@@ -1,0 +1,21 @@
+{
+    "command": "transform",
+
+    // Number of features per observation.
+    "featureCount": 39,
+
+    "keepOriginalFeatures": false,
+
+    // true and empty list keeps everything
+    "originalFeaturesToKeep": [],
+
+    // True if the feature vector should include the count value.
+    "featurizeWithProbabilities": true,
+    "removeFirstLabel": true,
+
+    // New configs
+    "percentilesFile": "example_percentiles.txt",
+    "countTableFile": "count_table.txt",
+    "transformDataFilePath": "example_data.txt.vw.gz",
+    "outDataFile": "count_data.txt.gz"
+}
