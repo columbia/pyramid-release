@@ -1,5 +1,6 @@
 *.class
 *.pyc
 *.swp
-
 src/target
+src/project/target/
+src/project/project/
