@@ -12,8 +12,9 @@
     // Valid labels found in the data.
     "labels": [-1, 1],
 
-    // Standard deviation of laplacian distribution that will be sampled.
+    // Scale value of laplacian distribution that will be sampled.
     "noiseLaplaceB": 195,
+    // The number of draws to be summed on initialization.
     "sumNNoiseDraws": 20,
 
     // Configure hash table by setting `cms` to false

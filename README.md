@@ -34,10 +34,10 @@ Below is an example configuration file for building a count table
     // Valid labels found in the data.
     "labels": [-1, 1],
 
-    // Standard deviation of laplacian distribution that will be sampled.
+    // Scale value of the laplacian distribution that will be sampled.
     "noiseLaplaceB": 195,
 
-    // Configure hash table by setting `cms` to false
+    // Configure to use a standard CMS by setting type of "cms"
     "countTableConfig": {"type": "unbiased_cms",
                          "delta": 0.007,
                          "epsilon": 0.0000272},
@@ -58,8 +58,8 @@ Below is an example configuration file for building a count table
 * `featureCombinations`: Array of arrays noting which combinations of features to be counted together. An empty array, `[]`, will count individual features and `[[1,2], [4,5]]` will count the individuals plus 1 & 2 and features 4 & 5.
 * `labels`: Array of labels expected in the dataset. If any other label is observed it is undefined.
 * `noiseLaplaceB`: floating point number denoting the scale value `b` to be used to parameterize the laplacian distribution.
-* `countTableConfig`: JSON object with three fields `type`, `delta`, and `epsilon`. `type` can be `cms` indiciate that a count min sketch should be used as the count table, `unbiased_cms` indicates a count median sketch should be used, and `exact` indicating that a hash table will be used. `delta` and `epsilon` parameterize the number of rows or columns to be used in one of the sketches.
-* `percentileFile`: File used to discretize the numeric features. It will have a number of lines in the form `2 | 0.2 0.5 0.6` where `2` is the feature index and `0.2 0.5 0.7` are the bounds for bucketing.
+* `countTableConfig`: JSON object with three fields `type`, `delta`, and `epsilon`. `type` can be `cms` indicate that a count min sketch should be used as the count table, `unbiased_cms` indicates a count median sketch should be used, and `exact` indicating that a hash table will be used. `delta` and `epsilon` parameterize the number of rows or columns to be used in one of the sketches.
+* `percentilesFile`: File used to discretize the numeric features. It will have a number of lines in the form `2 | 0.2 0.5 0.6` where `2` is the feature index and `0.2 0.5 0.7` are the bounds for bucketing.
 * `countTableFile`: The file to which the count table will be written.
 * `countDataFile`: Path to the data file to be used to build the count table.
 
@@ -82,10 +82,13 @@ Below is an example configuration file for transforming a dataset.
     "featurizeWithProbabilities": true,
     "removeFirstLabel": true,
 
-    // New configs
+    // Path to the file containing percentiles to bucket the numeric values.
     "percentilesFile": "example_percentiles.txt",
+    // File from which the count table should be read.
     "countTableFile": "count_table.txt",
+    // File from which the raw data should be read.
     "transformDataFilePath": "example_data.txt.vw.gz",
+    // File to which the featurized data should be written.
     "outDataFile": "count_data.txt.gz"
 }
 ```
@@ -98,6 +101,6 @@ Below is an example configuration file for transforming a dataset.
 * `featurizeWithProbabilities`: Set to true to include probabilities in the count featurized data.
 * `featurizeWithCounts`: Set to true to include marginal counts in the count featurized data.
 * `featurizeWithTotalCounts`: Set to true to include the total number of times a feature value is observed as a feature.
-* `percentileFile`: File used to discretize the numeric features. It will have a number of lines in the form `2 | 0.2 0.5 0.6` where `2` is the feature index and `0.2 0.5 0.7` are the bounds for bucketing.
+* `percentilesFile`: File used to discretize the numeric features. It will have a number of lines in the form `2 | 0.2 0.5 0.6` where `2` is the feature index and `0.2 0.5 0.7` are the bounds for bucketing.
 * `countTableFile`: The file to which the count table will be read.
 * `outDataFile`: Data into which the count featurized data will be written.

@@ -11,11 +11,15 @@
 
     // True if the feature vector should include the count value.
     "featurizeWithProbabilities": true,
+    // Set to true to remove the first label. This should generally be set to true.
     "removeFirstLabel": true,
 
-    // New configs
+    // Path to the file containing percentiles to bucket the numeric values.
     "percentilesFile": "example_percentiles.txt",
+    // File from which the count table should be read.
     "countTableFile": "count_table.txt",
+    // File from which the raw data should be read.
     "transformDataFilePath": "example_data.txt.vw.gz",
+    // File to which the featurized data should be written.
     "outDataFile": "count_data.txt.gz"
 }
